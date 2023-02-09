@@ -1,2 +1,2 @@
 **/__pycache__
-**/secret_key.py
+django/woodcraft/woodcraft/secret_key.py

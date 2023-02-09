@@ -1,1 +1,8 @@
-full_stack
+full_stack - flower shop
+
+backend - django
+
+
+
+
+

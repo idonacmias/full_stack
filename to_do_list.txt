@@ -1,0 +1,43 @@
+desine
+	desine functionality
+		change password
+		multi student project
+		difrent student list to difrent techer
+			register student need to register the class id?
+			
+	desine models
+	
+
+django backend 
+	implament urls
+	implament views (crud)		
+	implament models
+
+typescript frontend
+	
+	how to check if website on phone or pc
+
+	components:
+	
+	
+		navbar
+
+		login popapp 
+
+
+		woodcraft page
+
+		student page
+
+		teacher page (add new woodcraft object)
+
+
+
+
+Dockerfile
+	finish Docker totorial
+	implament Dockerfille
+	for implament Dockerfile
+		test Dokerfile
+
+

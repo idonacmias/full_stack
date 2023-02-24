@@ -16,6 +16,7 @@ Including another URLconf
 from django.urls import path
 from .views.ProjectAPIView import ProjectAPIView
 from .views.TeacherAPIView import TeacherAPIView
+from .views.StudentAPIView import StudentAPIView
 from .views.testview import testview
 
 urlpatterns = [
@@ -24,5 +25,8 @@ urlpatterns = [
     path('project/<int:pk>/', ProjectAPIView.as_view()),
     path('teacher/', TeacherAPIView.as_view()),
     path('teacher/<int:pk>/', TeacherAPIView.as_view()),
+    path('student/', StudentAPIView.as_view()),
+    path('student/<int:pk>/', StudentAPIView.as_view()),
+    path('student/teacher/<int:pk>/', StudentAPIView.get_student_of_teacher)
 ]
 

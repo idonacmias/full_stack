@@ -20,17 +20,16 @@ class Person(models.Model):
     class Meta:
         abstract = True
 
-class Student(Person):
-	project = models.ForeignKey(Project, on_delete=models.CASCADE)
-
-
 class Teacher(Person):
-	student = models.ForeignKey(Student, on_delete=models.PROTECT)
-
+	pass
 	# class Meta:
 	# 	permissions = [
     #         ("reset_student_password" "Can change the password of students"),
     #     ]
+
+class Student(Person):
+	teacher = models.ForeignKey(Teacher, on_delete=models.PROTECT)
+	
 
 class Student_project(models.Model):
 	student = models.ForeignKey(Student, on_delete=models.PROTECT)

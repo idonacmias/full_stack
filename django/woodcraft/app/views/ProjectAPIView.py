@@ -1,10 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
 
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-from rest_framework_simplejwt.views import TokenObtainPairView
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.parsers import MultiPartParser, FormParser
+# from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+# from rest_framework_simplejwt.views import TokenObtainPairView
+# from rest_framework.permissions import IsAuthenticated
 
 
 from rest_framework.views import APIView
@@ -15,8 +14,8 @@ from rest_framework.decorators import api_view, permission_classes
 
 from django.contrib.auth.models import User
 
-from ..models import Project, File, Student, Teacher, Student_project
-from ..serializers import ProjectSerializer, FileSerializer, StudentSerializer, TeacherSerializer, Student_projectSerializer
+from ..models import Project
+from ..serializers import ProjectSerializer
 
 
 
@@ -135,34 +134,34 @@ class ProjectAPIView(APIView):
 
 
 
-# ////////////////////////////////login /register
-# login
-class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
-    @classmethod
-    def get_token(cls, user):
-        token = super().get_token(user)
-        # Add custom claims
-        token['username'] = user.username
-        # ...
-        return token
+# # ////////////////////////////////login /register
+# # login
+# class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+#     @classmethod
+#     def get_token(cls, user):
+#         token = super().get_token(user)
+#         # Add custom claims
+#         token['username'] = user.username
+#         # ...
+#         return token
 
 
-class MyTokenObtainPairView(TokenObtainPairView):
-    serializer_class = MyTokenObtainPairSerializer
+# class MyTokenObtainPairView(TokenObtainPairView):
+#     serializer_class = MyTokenObtainPairSerializer
 
-# register
-@api_view(['POST'])
-def  register(req):
-    username=req.data["username"]
-    password=req.data["password"]
-    # create a new user (encrypt password)
-    try:
-        User.objects.create_user(username=username,password=password)
+# # register
+# @api_view(['POST'])
+# def  register(req):
+#     username=req.data["username"]
+#     password=req.data["password"]
+#     # create a new user (encrypt password)
+#     try:
+#         User.objects.create_user(username=username,password=password)
 
-    except:
-        return Response("error")    
+#     except:
+#         return Response("error")    
 
-    return Response(f"{username} registered")
+#     return Response(f"{username} registered")
  
 
 

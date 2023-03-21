@@ -5,4 +5,4 @@ from rest_framework.decorators import api_view
 # //////////test method
 @api_view(['GET'])
 def testview(req):
-    return Response("<h1>welcome to my project -  server a live</h1>")
+    return Response("welcome to my project -  server a live")

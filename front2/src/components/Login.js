@@ -1,19 +1,48 @@
 import React, { useState } from 'react';
 
-import axios, {isCancel, AxiosError} from 'axios';
+import axios from 'axios'; //{isCancel, AxiosError}
+
+import serverBaseUrl from '../setting'
+
 
 
 function Login() {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
+  const [rank, setRank] = useState('student')
 
+  const testLog = (event) => {
+    console.log('Name:');
+	
+	};
   const handleSubmit = (event) => {
-    event.preventDefault();
     console.log('Name:', name, 'Password:', password);
-    axios.request({
-    		baseURL:'http://127.0.0.1:8000/test/',
+    axios({
+			baseURL: serverBaseUrl + '/' + 'test' + '/',
+			// baseURL: serverBXaseUrl + '/' + 'student' + '/',
+			method: 'GET',
+			body: JSON.stringify({name : name, password : password}),
+			// headers: {"X-CSRFToken": csrfToken},
+
+ 	// 		// headers: {
+    // 		// 		"Access-Control-Allow-Origin": "*",
+    // 		// 		"Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+	// 		// 		}
 
     	})
+  	// // axios.request({
+	// 	baseURL: serverBaseUrl + '/' + 'test/',
+	// 	methode: 'GET',
+	// 	})
+  };
+
+  const handleChackbox = event => {
+    console.log(event)
+    if (event.target.checked) {
+      console.log('✅ Checkbox is checked');
+    } else {
+      console.log('⛔️ Checkbox is NOT checked');
+    }
   };
 
   return (
@@ -22,12 +51,14 @@ function Login() {
         Name:
         <input type="text" value={name} onChange={(event) => setName(event.target.value)} />
       </label>
-      <br />
+      <br/>
       <label>
         Password:
         <input type="password" value={password} onChange={(event) => setPassword(event.target.value)} />
       </label>
-      <br />
+      <br/>
+      teacher<input type="checkbox" onChange={() => handleChackbox()} />
+      <br/>
       <button type="submit">Submit</button>
     </form>
   );

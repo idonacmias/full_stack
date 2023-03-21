@@ -16,9 +16,13 @@ from django.http import HttpResponse
 
 
 # model crud
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 class StudentAPIView(APIView):
     def get(self, request,pk=-1):
+        breakpoint()
+        print(dir(request))
+        print(request.data)
+
         if (pk > -1):
             my_model = Student.objects.get(id=pk)
             serializer = StudentSerializer(my_model)
@@ -53,6 +57,12 @@ class StudentAPIView(APIView):
         my_model.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+    def options(self, request):
+        breakpoint()
+        print(dir(request))
+        print(request.data)
+
+        return Response()
 
     @api_view()
     def get_student_of_teacher(request, pk):

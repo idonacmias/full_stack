@@ -7,12 +7,12 @@ function Test() {
     const [fname, setfname] = useState("")
     const [email, setemail] = useState("")
     const [students, setstudents] = useState([])
+    const [fnameUpToDate, setFnameUpToDate] = useState("")
 
-
-    useEffect(() => {
-        console.log("call the server")
-        show()
-    }, [])
+    // useEffect(() => {
+    //     console.log("call the server")
+    //     show()
+    // }, [])
 
 
     const add2Server = () => {
@@ -39,23 +39,59 @@ function Test() {
 
 
 
+    const getMyDict = () => {
+        console.log('getMyDict')
+        axios.get('http://localhost:8000/test/')
+        .then((response) => console.log(response.data));
+    }
+
+    const postMyDict = () => {
+        console.log('postMyDict')
+        axios.post('http://localhost:8000/test/', {name: 'bob'})
+        .then((response) => console.log(response.data));
+
+    }
+
+    const handleSubmit = (e) => {
+        console.log('handleSubmit')
+        console.log('fname', fname)
+        axios.post('http://localhost:8000/test/', {name: fname})
+        .then((response) => setFnameUpToDate(response.data.name))
+        
+        // .then((response) => setFnameUpToDate(response.data));
+        e.preventDefault()
+
+
+    }
 
     return (
-        <div className="Test">
+       <div>
+            <button onClick={() => getMyDict()}>getMyDict</button>
+            <button onClick={() => postMyDict()}>postMyDict</button>
+
+             <form onSubmit={handleSubmit}>
+                 Name:<input onChange={(e) => setfname(e.target.value)} />
+                <button type="submit">Submit</button>
+
+             </form>
+            <h1>{fnameUpToDate}</h1>
+       </div>
+
+        // <div className="Test">
 
 
-            Number of students:{students.length}<hr></hr>
-            {students.map((stud, ind) => <div key={ind}>
-                Fname: {stud.fname} {", "}
-                Email:{stud.email}
-                <button onClick={() => data_delete( stud.id )}>Delete</button>
-                <button onClick={() => upd( stud.id )}>Update</button>
-            </div>)}
-            <hr></hr>
-            Email:<input onChange={(e) => setemail(e.target.value)} />
-            Name:<input onChange={(e) => setfname(e.target.value)} />
-            <button onClick={() => add2Server()}>Add</button>
-        </div>
+        //     Number of students:{students.length}<hr></hr>
+        //     {students.map((stud, ind) => <div key={ind}>
+        //         Fname: {stud.fname} {", "}
+        //         Email:{stud.email}
+        //         <button onClick={() => data_delete( stud.id )}>Delete</button>
+        //         <button onClick={() => upd( stud.id )}>Update</button>
+        //     </div>)}
+        //     <hr></hr>
+        //     Email:<input onChange={(e) => setemail(e.target.value)} />
+        //     Name:<input onChange={(e) => setfname(e.target.value)} />
+        //     <button onClick={() => add2Server()}>Add</button>
+        // </div>
     );
 }
 

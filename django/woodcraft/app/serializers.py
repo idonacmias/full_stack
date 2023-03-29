@@ -1,4 +1,5 @@
 from .models import Project, File, Student, Teacher, Student_project
+from django.contrib.auth.models import User
 
 from rest_framework import serializers
 
@@ -32,7 +33,7 @@ class TeacherSerializer(serializers.ModelSerializer):
      class Meta:
         model = Teacher
         fields = '__all__'
-
+    
 class Student_projectSerializer(serializers.ModelSerializer):
       class Meta:
          model = Student_project

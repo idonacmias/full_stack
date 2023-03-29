@@ -43,8 +43,6 @@ class ProjectAPIView(APIView):
         """
         Handle POST requests to create a new Project object
         """
-        # usr =request.user
-        # print(usr)
         serializer = ProjectSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()

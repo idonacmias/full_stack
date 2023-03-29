@@ -19,9 +19,6 @@ from django.http import HttpResponse
 # @permission_classes([IsAuthenticated])
 class StudentAPIView(APIView):
     def get(self, request,pk=-1):
-        breakpoint()
-        print(dir(request))
-        print(request.data)
 
         if (pk > -1):
             my_model = Student.objects.get(id=pk)
@@ -30,11 +27,15 @@ class StudentAPIView(APIView):
         else:
             my_model = Student.objects.all()
             serializer = StudentSerializer(my_model, many=True)
-        
         return Response(serializer.data)
 
     def post(self, request):
-        user = User.objects.create_user(request.data['name'], request.data['email'], request.data['password'])
+        # print(dir(request))
+        # print(f'request.POST: {request.POST}')
+        user = User.objects.create_user(request.data['username'], request.data['email'], request.data['password'])
+        print(dir(user))
+        print(help(user.groups))
+        print(type(user.groups))
         student_data = {'user' : user.id}
         serializer = StudentSerializer(data=student_data)
         if serializer.is_valid():
@@ -58,10 +59,10 @@ class StudentAPIView(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
     def options(self, request):
-        breakpoint()
-        print(dir(request))
-        print(request.data)
-
+        # breakpoint()
+        # print(dir(request))
+        # print(request.data)
+        print(request)
         return Response()
 
     @api_view()

@@ -7,7 +7,8 @@ import Login from './components/Login';
 import ProjectsCards from './components/ProjectsCards';
 import NavBar from './components/NavBar';
 import Test from './components/test';
-
+import Logout from './components/Logout';
+import PersenalProjectsCards from './components/PersenalProjectsCards';
 import reportWebVitals from './reportWebVitals';
 
 import {
@@ -27,8 +28,9 @@ root.render(
          <Route path="/" element={<App />} />
          <Route path="/login" element={<Login />} />
          <Route path="/ProjectsCards" element={<ProjectsCards />} />
-         <Route path="/ProjectsCards/:id" element={<ProjectsCards />} />
-         <Route path="/test" element={<Test/>} />
+         <Route path="/PersenalProjectsCards" element={<PersenalProjectsCards />} />
+         {/*<Route path="/test" element={<Test/>} />*/}
+         <Route path="/logout" element={<Logout/>}/>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

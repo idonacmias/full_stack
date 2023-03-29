@@ -7,64 +7,101 @@ import serverBaseUrl from '../setting'
 
 
 function Login() {
+
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
-  const [rank, setRank] = useState('student')
-
-  const testLog = (event) => {
-    console.log('Name:');
 	
-	};
-  const handleSubmit = (event) => {
-    console.log('Name:', name, 'Password:', password);
-    axios({
-			baseURL: serverBaseUrl + '/' + 'test' + '/',
-			// baseURL: serverBXaseUrl + '/' + 'student' + '/',
-			method: 'GET',
-			body: JSON.stringify({name : name, password : password}),
-			// headers: {"X-CSRFToken": csrfToken},
+  const handleSubmit = (e) => {
+		console.log('handleSubmit')
+        e.preventDefault()
+        axios.post('http://localhost:8000/login/', {username: name, password : password})
+        .then((response) => console.log(response))
 
- 	// 		// headers: {
-    // 		// 		"Access-Control-Allow-Origin": "*",
-    // 		// 		"Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
-	// 		// 		}
+    	// .then((response) => console.log(response.config))
+        // .then(axios.post('http://localhost:8000/logout/'))
 
-    	})
-  	// // axios.request({
-	// 	baseURL: serverBaseUrl + '/' + 'test/',
-	// 	methode: 'GET',
-	// 	})
-  };
-
-  const handleChackbox = event => {
-    console.log(event)
-    if (event.target.checked) {
-      console.log('✅ Checkbox is checked');
-    } else {
-      console.log('⛔️ Checkbox is NOT checked');
+    	// .then(() => axios.post('http://localhost:8000/login/', ))
     }
-  };
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Name:
-        <input type="text" value={name} onChange={(event) => setName(event.target.value)} />
-      </label>
-      <br/>
-      <label>
-        Password:
-        <input type="password" value={password} onChange={(event) => setPassword(event.target.value)} />
-      </label>
-      <br/>
-      teacher<input type="checkbox" onChange={() => handleChackbox()} />
-      <br/>
-      <button type="submit">Submit</button>
-    </form>
-  );
+	return (
+		<form onSubmit={handleSubmit}>
+			Name:
+			<input type="text" value={name} onChange={(event) => setName(event.target.value)} />
+       <br/>
+         Password:
+         <input type="password" value={password} onChange={(event) => setPassword(event.target.value)} />
+       <br/>
+
+			<button type="submit">Submit</button>
+ 		</form>
+
+ 		);
 }
 
+
 export default Login
+
+
+
+
+
+
+
+
+
+
+//   const [name, setName] = useState('');
+//   const [password, setPassword] = useState('');
+//   const [rank, setRank] = useState('student')
+
+//   const handleSubmit = (event) => {
+//     console.log('Name:', name, 'Password:', password);
+//     axios.post(serverBaseUrl + '/' + 'student' + '/',
+// 			// baseURL: serverBXaseUrl + '/' + 'student' + '/',
+// 			// method: 'POST',
+// 			// JSON.stringify({name : name, password : password}),
+// 			// headers: {"X-CSRFToken": csrfToken},
+
+//  	// 		// headers: {
+//     // 		// 		"Access-Control-Allow-Origin": "*",
+//     // 		// 		"Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+// 	// 		// 		}
+
+//     	{name:name, password:password})
+//   	// // axios.request({
+// 	// 	baseURL: serverBaseUrl + '/' + 'test/',
+// 	// 	methode: 'GET',
+// 	// 	})
+//   };
+
+//   const handleChackbox = event => {
+//     console.log(event)
+//     if (event.target.checked) {
+//       console.log('✅ Checkbox is checked');
+//     } else {
+//       console.log('⛔️ Checkbox is NOT checked');
+//     }
+//   };
+
+//   return (
+//     <form onSubmit={handleSubmit}>
+//       <label>
+//         Name:
+//         <input type="text" value={name} onChange={(event) => setName(event.target.value)} />
+//       </label>
+//       <br/>
+//       <label>
+//         Password:
+//         <input type="password" value={password} onChange={(event) => setPassword(event.target.value)} />
+//       </label>
+//       <br/>
+//       teacher<input type="checkbox" onChange={() => handleChackbox()} />
+//       <br/>
+//       <button type="submit">Submit</button>
+//     </form>
+//   );
+// }
+
 
 
 

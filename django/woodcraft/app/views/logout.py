@@ -5,6 +5,7 @@ from rest_framework.decorators import api_view
 
 @api_view()
 def logout_view(request):
+    print(request.user)
     print(f'request dict: {request.__dict__.keys()}')
     print(f'logout user{request.user}')
     print(f"user_id {request.session.get('user_id')}")

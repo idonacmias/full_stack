@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 class Project(models.Model):
 	name = models.CharField(max_length=30)
-	photos = models.CharField(max_length=30)
+	image = models.ImageField(upload_to='images/')
 	description = models.CharField(max_length=300)  
 
 

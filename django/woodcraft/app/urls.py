@@ -21,6 +21,11 @@ from .views.testview import TestView
 from .views.LoginView import LoginAPIView
 from .views.logout import logout_view
 from .views.UserProjectAPIView import UserProjectAPIView
+from .views.TokenObtainPairView import MyTokenObtainPairView
+from .views.test_image import test_image
+from rest_framework_simplejwt.views import (
+    TokenRefreshView,
+)
 
 
 urlpatterns = [
@@ -35,6 +40,9 @@ urlpatterns = [
     path('student/teacher/<int:pk>/', StudentAPIView.get_student_of_teacher),
     path('login/', LoginAPIView.as_view()),
     path('logout/', logout_view),
+    path('test_image/', test_image),
+    path('token/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
 ]
 

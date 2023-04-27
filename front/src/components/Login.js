@@ -10,19 +10,21 @@ function Login() {
 
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
-	
+
   const handleSubmit = (e) => {
 		console.log('handleSubmit')
         e.preventDefault()
-        axios.post('http://localhost:8000/login/', {username: name, password : password})
-        .then((response) => console.log(response))
+        axios.post('http://localhost:8000/token/', {username: name, password : password})
+        .then((response) => localStorage.setItem('access',response.data.access)) 
+        .catch(() => localStorage.setItem('access', ''))
+        } 
 
-    	// .then((response) => console.log(response.config))
-        // .then(axios.post('http://localhost:8000/logout/'))
 
-    	// .then(() => axios.post('http://localhost:8000/login/', ))
-    }
+  const handelResponse = (response) =>{ 
+        
+        console.log('localStorage:', localStorage.getItem('access'))
 
+      }
 	return (
 		<form onSubmit={handleSubmit}>
 			Name:

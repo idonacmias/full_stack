@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'app',
     'rest_framework_simplejwt',
-
 ]
 
 MIDDLEWARE = [
@@ -56,8 +55,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "corsheaders.middleware.CorsMiddleware",
-
-
 ]
 
 
@@ -77,7 +74,7 @@ SIMPLE_JWT = {
     "BLACKLIST_AFTER_ROTATION": False,
     "UPDATE_LAST_LOGIN": False,
 
-    "ALGORITHM": "HS256",
+    "ALGORITHM": "HS384",
     "SIGNING_KEY": SECRET_KEY,
     "VERIFYING_KEY": "",
     "AUDIENCE": None,
@@ -99,7 +96,7 @@ SIMPLE_JWT = {
     "JTI_CLAIM": "jti",
 
     "SLIDING_TOKEN_REFRESH_EXP_CLAIM": "refresh_exp",
-    "SLIDING_TOKEN_LIFETIME": timedelta(minutes=5),
+    "SLIDING_TOKEN_LIFETIME": timedelta(minutes=40),
     "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=1),
 
     "TOKEN_OBTAIN_SERIALIZER": "rest_framework_simplejwt.serializers.TokenObtainPairSerializer",
@@ -194,3 +191,7 @@ CORS_ALLOWED_ORIGINS = ['http://localhost:3000']
 
 #relevent only if i will use session else can be deletet
 SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
+
+
+
+

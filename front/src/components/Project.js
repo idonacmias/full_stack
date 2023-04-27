@@ -6,11 +6,9 @@ function Project(props){
 		<>
 
 		<>Project card {props.index}</>
-		<a href	='/ProjectsCards/{props.id}'>
-			<>{props.name}</>
-        	<img src={process.env.PUBLIC_URL + props.photo} alt="project" />
-		</a>
+		<>{props.name}</>
 		<br/>		
+		<img src={props.image} alt={props.name} />
 
 		</>
 	);

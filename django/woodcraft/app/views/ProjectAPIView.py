@@ -1,9 +1,7 @@
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
 
-# from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-# from rest_framework_simplejwt.views import TokenObtainPairView
-# from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated
 
 
 from rest_framework.views import APIView
@@ -20,7 +18,7 @@ from ..serializers import ProjectSerializer
 
 
 
-# @permission_classes([IsAuthenticated])
+@permission_classes([IsAuthenticated])
 class ProjectAPIView(APIView):
     """
     This class handle the CRUD operations for Project
@@ -31,8 +29,14 @@ class ProjectAPIView(APIView):
         """
         if (pk > -1):
             my_model = Project.objects.get(id=pk)
+            print(my_model.image)
             serializer = ProjectSerializer(my_model)
+            # serializer.data['image'] = ''
+            print(dir(serializer))
+            print(serializer.__dict__)
+            print(serializer.data['image'])
 
+            print(f'comper fileds: {serializer.data["image"] == my_model.image}')
         else:
             my_model = Project.objects.all()
             serializer = ProjectSerializer(my_model, many=True)
@@ -69,7 +73,6 @@ class ProjectAPIView(APIView):
         my_model = Project.objects.get(pk=pk)
         my_model.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
 
 
 

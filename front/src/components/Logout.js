@@ -7,12 +7,12 @@ import serverBaseUrl from '../setting'
 
 
 function Logout() {
-  axios.defaults.withCredentials = true; // include cookies with all axios requests
+  // axios.defaults.withCredentials = true; // include cookies with all axios requests
 
 	const handleLogout = () => {
 		console.log('handleLogout')
 		console.log(localStorage)
-        axios.get('http://localhost:8000/logout/')
+    localStorage.setItem('access', '')
    		
     }
 

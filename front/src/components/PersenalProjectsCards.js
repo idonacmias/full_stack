@@ -7,10 +7,13 @@ import { useEffect, useState } from 'react';
 function PersenalProjectsCards(props){
 	
 	const [projectCards, setProjectCards] = useState([])
+	const config = {headers:{Authorization:`Bearer ${localStorage.getItem('access')}`}}
 
     useEffect(() => {
+			console.log('card:', projectCards)
+
     		// console.log(props)
-    		axios.get('http://localhost:8000/user_project/')
+    		axios.get('http://localhost:8000/project/10', config)
     		.then((response) => setProjectCards(response.data))
 			});
 
@@ -18,7 +21,7 @@ function PersenalProjectsCards(props){
 		<>
 		<h1>ProjectsCards</h1>
 		<p>{projectCards.map((project, i) =>  {
-			return <Project key={i} name={project.name} photo={project.photo} index={i}/>
+			return <Project key={i} name={project.name} photo={project.image} index={i}/>
 
 		} )}</p>
 		</>

@@ -66,6 +66,9 @@ class ProjectAPIView(APIView):
         
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
+    def personal(self, request):
+        pass
+
     def delete(self, request, pk):
         """
         Handle DELETE requests to delete a Project object

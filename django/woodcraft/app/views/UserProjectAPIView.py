@@ -26,9 +26,11 @@ class UserProjectAPIView(APIView):
         print(dir(User.username))
         print(f'User.username.field: {User.username.field}')
         print(settings.AUTH_USER_MODEL)
-        
-        print(request.user)
+        print(f'user str: {request.user}')
+        print(f'user grup: {request.user.groups}')
         return Response()
+
+
     # def post(self, request):
     #     user = User.objects.create_user(request.data['name'], request.data['email'], request.data['password'])
     #     Teacher_data = {'user' : user.id}

@@ -32,6 +32,7 @@ urlpatterns = [
     path('test/', TestView.as_view()),
     path('project/', ProjectAPIView.as_view()),
     path('project/<int:pk>/', ProjectAPIView.as_view()),
+    # path('project/personal/', ProjectAPIView.personal),
     path('user_project/', UserProjectAPIView.as_view()),
     path('teacher/', TeacherAPIView.as_view()),
     path('teacher/<int:pk>/', TeacherAPIView.as_view()),

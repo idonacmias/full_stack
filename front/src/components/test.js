@@ -3,7 +3,7 @@ import axios from 'axios';
 
 
 function Test() {
-    const SERVER_URL = "http://localhost:8000/test"
+    const SERVER_URL = "https://woodworksite.onrender.com/test"
     const [fname, setfname] = useState("")
     const [email, setemail] = useState("")
     const [students, setstudents] = useState([])
@@ -41,13 +41,13 @@ function Test() {
 
     const getMyDict = () => {
         console.log('getMyDict')
-        axios.get('http://localhost:8000/test/')
+        axios.get('https://woodworksite.onrender.com/test/')
         .then((response) => console.log(response.data));
     }
 
     const postMyDict = () => {
         console.log('postMyDict')
-        axios.post('http://localhost:8000/test/', {name: 'bob'})
+        axios.post('https://woodworksite.onrender.com/test/', {name: 'bob'})
         .then((response) => console.log(response.data));
 
     }
@@ -55,7 +55,7 @@ function Test() {
     const handleSubmit = (e) => {
         console.log('handleSubmit')
         console.log('fname', fname)
-        axios.post('http://localhost:8000/test/', {name: fname})
+        axios.post('https://woodworksite.onrender.com/test/', {name: fname})
         .then((response) => setFnameUpToDate(response.data.name))
         
         // .then((response) => setFnameUpToDate(response.data));

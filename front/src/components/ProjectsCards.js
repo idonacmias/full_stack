@@ -13,7 +13,7 @@ function ProjectsCards(props){
 		console.log('ProjectsCards: cards')
 		console.log('config',config)
     	
-        axios.get('http://localhost:8000/project/', config)
+        axios.get('https://woodworksite.onrender.com/project/', config)
 		.then((response) => handelResponse(response))
 		}
 

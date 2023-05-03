@@ -27,7 +27,6 @@ function ProjectsCards(props){
 		<h1>ProjectsCards</h1>
         <button onClick={() => cards()}>getMyDict</button>
 		
-		{/*<Project key={0} name={projectCards.name} image={projectCards.image} index={0}/>*/}
 		<p>{projectCards.map((project, i) =>  {
 			return <Project key={i} name={project.name} image={project.image.slice(1)} index={i}/>
 

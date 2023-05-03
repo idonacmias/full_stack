@@ -9,11 +9,6 @@ function Test() {
     const [students, setstudents] = useState([])
     const [fnameUpToDate, setFnameUpToDate] = useState("")
 
-    // useEffect(() => {
-    //     console.log("call the server")
-    //     show()
-    // }, [])
-
 
     const add2Server = () => {
         const student = { fname: fname, email: email };
@@ -57,8 +52,6 @@ function Test() {
         console.log('fname', fname)
         axios.post('https://woodworksite.onrender.com/test/', {name: fname})
         .then((response) => setFnameUpToDate(response.data.name))
-        
-        // .then((response) => setFnameUpToDate(response.data));
         e.preventDefault()
 
 
@@ -77,21 +70,6 @@ function Test() {
             <h1>{fnameUpToDate}</h1>
        </div>
 
-        // <div className="Test">
-
-
-        //     Number of students:{students.length}<hr></hr>
-        //     {students.map((stud, ind) => <div key={ind}>
-        //         Fname: {stud.fname} {", "}
-        //         Email:{stud.email}
-        //         <button onClick={() => data_delete( stud.id )}>Delete</button>
-        //         <button onClick={() => upd( stud.id )}>Update</button>
-        //     </div>)}
-        //     <hr></hr>
-        //     Email:<input onChange={(e) => setemail(e.target.value)} />
-        //     Name:<input onChange={(e) => setfname(e.target.value)} />
-        //     <button onClick={() => add2Server()}>Add</button>
-        // </div>
     );
 }
 

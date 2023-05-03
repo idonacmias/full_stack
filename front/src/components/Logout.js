@@ -7,7 +7,6 @@ import serverBaseUrl from '../setting'
 
 
 function Logout() {
-  // axios.defaults.withCredentials = true; // include cookies with all axios requests
 
 	const handleLogout = () => {
 		console.log('handleLogout')
